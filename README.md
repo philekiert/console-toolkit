@@ -10,7 +10,7 @@ ___
 - RevertConsoleColours() reapplies all original colour values. Should usually be called before exit.
 - GotoXY(x, y) sets the cursor position.
 
-Everything else should be relatively self explanitory.
+Everything else should be relatively self-explanatory.
 ___
 ### Standard Colour scheme
 
