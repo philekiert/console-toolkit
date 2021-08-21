@@ -44,7 +44,7 @@ outputBuff(GetStdHandle(-11)) /* -11 here gets the output buffer.
   oldBufferSize[1] = bufferInfo.dwSize.Y;
 }
 
-int ConsoleToolkit::ColourPicker(const unsigned &back, const unsigned &fore) const
+unsigned ConsoleToolkit::ColourPicker(const unsigned &back, const unsigned &fore) const
 {
   return back * 16 + fore;
 }
