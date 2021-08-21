@@ -21,7 +21,7 @@ class ConsoleToolkit
   // Colouring
   // ---------
 
-  int ColourPicker(const unsigned &back, const unsigned &fore) const;
+  unsigned ColourPicker(const unsigned &back, const unsigned &fore) const;
   void SetActiveColour(const unsigned &col);
 
   void SetColourValue(const size_t &index, const COLORREF &hexColour);
