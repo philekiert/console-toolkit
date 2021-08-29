@@ -17,8 +17,8 @@
 14 Bright Yellow
 15 White                          */
 
-#include <string>
 #include <windows.h>
+#include <conio.h>
 #include "ConsoleToolkit.hpp"
 
 ConsoleToolkit::ConsoleToolkit():
