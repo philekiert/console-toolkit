@@ -2,6 +2,7 @@
 #define CONSOLE_TOOLKIT_H
 
 #include <windows.h>
+#include <conio.h>
 
 class ConsoleToolkit
 {
