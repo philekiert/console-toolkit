@@ -52,6 +52,7 @@ unsigned ConsoleToolkit::ColourPicker(const unsigned &back, const unsigned &fore
 void ConsoleToolkit::SetActiveColour(const unsigned &col)
 {
   SetConsoleTextAttribute(outputBuff, col);
+  GetConsoleScreenBufferInfoEx(outputBuff, &bufferInfo);
 }
 
 void ConsoleToolkit::SetColourValue(const size_t &index, const COLORREF &hexColour)
@@ -80,6 +81,13 @@ void ConsoleToolkit::RevertConsoleColours()
 // Other Useful Tools
 // ------------------
 
+void ConsoleToolkit::SetConsoleWindowSize(const short &x, const short &y)
+{
+  SMALL_RECT win{0, 0, x - 1, y - 1};
+  // false makes the first two parametres relative to the current position.
+  if (SetConsoleWindowInfo(outputBuff, true, &win) == 0)
+    std::cout << GetLastError() << std::endl;
+}
 void ConsoleToolkit::SetConsoleBufferSize(const short &x, const short &y)
 {
   bufferInfo.dwSize.X = x;
@@ -96,15 +104,18 @@ void ConsoleToolkit::RevertConsoleBufferSize()
 }
 
 
-void ConsoleToolkit::SetConsoleWindowSize(const unsigned &cols, const unsigned &lines)
+void ConsoleToolkit::SetConsoleNotResizable(const bool &choice)
 {
-  std::string comm = "MODE CON COLS=" + std::to_string(cols) + " LINES=" + std::to_string(lines);
-  system(comm.c_str());
-}
-void ConsoleToolkit::SetConsoleNotResizable()
-{
-  SetWindowLong(window, GWL_STYLE, GetWindowLong(window, GWL_STYLE) & ~WS_SIZEBOX);
-  SetWindowPos(window, HWND_TOP, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
+  if (choice)
+  {
+    SetWindowLong(window, GWL_STYLE, GetWindowLong(window, GWL_STYLE) & ~WS_SIZEBOX);
+    SetWindowPos(window, HWND_TOP, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
+  }
+  else
+  {
+    SetWindowLong(window, GWL_STYLE, GetWindowLong(window, GWL_STYLE) | WS_SIZEBOX);
+    SetWindowPos(window, HWND_TOP, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
+  }
 }
 void ConsoleToolkit::DisableConsoleMaximise()
 {
