@@ -84,9 +84,7 @@ void ConsoleToolkit::RevertConsoleColours()
 void ConsoleToolkit::SetConsoleWindowSize(const short &x, const short &y)
 {
   SMALL_RECT win{0, 0, x - 1, y - 1};
-  // false makes the first two parametres relative to the current position.
-  if (SetConsoleWindowInfo(outputBuff, true, &win) == 0)
-    std::cout << GetLastError() << std::endl;
+  SetConsoleWindowInfo(outputBuff, true, &win);
 }
 void ConsoleToolkit::SetConsoleBufferSize(const short &x, const short &y)
 {
