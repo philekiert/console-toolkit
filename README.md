@@ -10,6 +10,8 @@ ___
 - RevertConsoleColours() reapplies all original colour values. Should usually be called before exit.
 - GotoXY(x, y) sets the cursor position.
 
+Regarding window size changes, make sure the window size is set no larger than the buffer size, or the change will silently fail. The buffer, however, can safely be set smaller than the window.
+
 Everything else should be relatively self-explanatory.
 ___
 ### Standard Colour scheme
