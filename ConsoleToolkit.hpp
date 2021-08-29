@@ -35,12 +35,13 @@ class ConsoleToolkit
   // Other Useful Tools
   // ------------------
 
+  // SetConsoleWindowSize() fails if it exceeds buffer size.
+  void SetConsoleWindowSize(const short &x, const short &y);
+  // SetConsoleBufferSize() will shrink the window if needed.
   void SetConsoleBufferSize(const short &x, const short &y);
   void RevertConsoleBufferSize();
 
-
-  void SetConsoleWindowSize(const unsigned &cols, const unsigned &lines);
-  void SetConsoleNotResizable();
+  void SetConsoleNotResizable(const bool &);
   void DisableConsoleMaximise();
   void  EnableConsoleMaximise();
   void DisableConsoleMinimise();
