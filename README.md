@@ -2,19 +2,19 @@
 A basic toolkit for manipulating a Windows console window's buffer size, window size and colour settings.
 ___
 ### Brief function overview
-```ColourPicker(background, text)``` takes two ints between 0 and 15 (selection listed below) and produces a colour ID between 0 and 255.
+- ```ColourPicker(background, text)``` takes two ints between 0 and 15 (selection listed below) and produces a colour ID between 0 and 255.
 
-```SetActiveColour(colour)``` sets the active print colour to the returned value mentioned above.
+- ```SetActiveColour(colour)``` sets the active print colour to the returned value mentioned above.
 
-```SetColourValue(index, hexColour)``` sets a new hex value as the colour at a given index (selection listed below).
+- ```SetColourValue(index, hexColour)``` sets a new hex value as the colour at a given index (selection listed below).
 
-```ApplyConsoleColours()``` must be called after any changes made to colour values.
+- ```ApplyConsoleColours()``` must be called after any changes made to colour values.
 
-```ResetColourValue(index)``` resets the colour value at a given index to its value when the class object was first instantiated.
+- ```ResetColourValue(index)``` resets the colour value at a given index to its value when the class object was first instantiated.
 
-```RevertConsoleColours()``` reapplies all original colour values. Should usually be called before exit.
+- ```RevertConsoleColours()``` reapplies all original colour values. Should usually be called before exit.
 
-```GotoXY(x, y)``` sets the cursor position.
+- ```GotoXY(x, y)``` sets the cursor position.
 
 Regarding window size changes, make sure the window size is set no larger than the buffer size, or the change will silently fail. The buffer, however, can safely be set smaller than the window.
 
